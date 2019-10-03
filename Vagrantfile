@@ -43,19 +43,16 @@ Vagrant.configure("2") do |config|
   # the path on the host to the actual folder. The second argument is
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
-  config.vm.synced_folder "./druhabr.com/", "/var/www/druhabr.com", owner: "www-data", group: "www-data", create:true, mount_options: ["dmode=777,fmode=777"]
+  config.vm.synced_folder ".", "/var/www/druhabr.com", owner: "www-data", group: "www-data", create:true, mount_options: ["dmode=777,fmode=777"]
 
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
   # Example for VirtualBox:
   #
-  # config.vm.provider "virtualbox" do |vb|
-  #   # Display the VirtualBox GUI when booting the machine
-  #   vb.gui = true
-  #
-  #   # Customize the amount of memory on the VM:
-  #   vb.memory = "1024"
-  # end
+  config.vm.provider "virtualbox" do |vb|
+     vb.cpus = 2
+     vb.memory = 2048
+  end
   #
   # View the documentation for the provider you are using for more
   # information on available options.
